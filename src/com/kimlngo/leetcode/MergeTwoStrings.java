@@ -1,6 +1,6 @@
 package com.kimlngo.leetcode;
 
-public class ProblemSolving {
+public class MergeTwoStrings {
     public static void main(String[] arg) {
         String word1 = "abcd", word2 = "pq";
         System.out.println(mergeString(word1, word2));
