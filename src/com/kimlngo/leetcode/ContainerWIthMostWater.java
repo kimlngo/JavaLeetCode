@@ -6,36 +6,11 @@ import java.io.IOException;
 
 public class ContainerWIthMostWater {
     public static void main(String[] args) throws IOException {
-        int[] input = readFile();
+        int[] input = Util.readWaterTxt();
         long start = System.currentTimeMillis();
         System.out.println(maxArea_TwoPointers(input));
         System.out.println("Execution Time = " + (System.currentTimeMillis() - start));
 
-    }
-
-    public static int[] readFile()
-            throws IOException {
-        String file = "src/com/kimlngo/leetcode/water.txt";
-
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String currentLine = reader.readLine();
-        reader.close();
-
-        String[] splits = currentLine.split(",");
-        int[] result = new int[splits.length];
-
-        int min = Integer.parseInt(splits[0]);
-        int max = min;
-        for (int i = 0; i < splits.length; i++) {
-            int cur = Integer.parseInt(splits[i]);
-            if (cur < min) min = cur;
-            if (cur > max) max = cur;
-
-            result[i] = cur;
-        }
-        System.out.println("min = " + min);
-        System.out.println("max = " + max);
-        return result;
     }
 
     private static int maxArea_InEfficient(int[] height) {
