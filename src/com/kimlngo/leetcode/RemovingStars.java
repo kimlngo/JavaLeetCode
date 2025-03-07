@@ -17,9 +17,8 @@ public class RemovingStars {
             else stack.pop();
         }
 
-        StringBuilder sb = new StringBuilder();
-        for(Character c : stack)
-            sb.append(c.toString());
-        return sb.toString();
+        return stack.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining());
     }
 }
