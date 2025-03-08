@@ -1,5 +1,7 @@
 package com.kimlngo.leetcode;
 
+import com.kimlngo.leetcode.data.ListNode;
+
 import java.util.Stack;
 
 public class ReverseLinkedList {
@@ -52,18 +54,3 @@ public class ReverseLinkedList {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    public ListNode(){}
-
-    public ListNode(int val) {
-        this.val = val;
-    }
-
-    public ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}

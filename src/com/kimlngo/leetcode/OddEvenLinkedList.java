@@ -1,6 +1,7 @@
 package com.kimlngo.leetcode;
 
 import com.kimlngo.leetcode.data.ListNode;
+import com.kimlngo.leetcode.data.NodeUtil;
 
 public class OddEvenLinkedList {
 
@@ -18,7 +19,7 @@ public class OddEvenLinkedList {
         four.next = five;
         five.next = six;
 
-        printList(oddEvenList(one));
+        NodeUtil.printList(oddEvenList(one));
 
     }
 
@@ -51,19 +52,5 @@ public class OddEvenLinkedList {
         if(!isOdd) even.next = null;
 
         return head;
-    }
-
-    private static void printList(ListNode head) {
-        ListNode cur = head;
-        StringBuilder sb = new StringBuilder();
-
-        while (cur != null) {
-            sb.append(cur.val);
-            sb.append(" -> ");
-            cur = cur.next;
-        }
-
-        System.out.println(sb.substring(0, sb.length() - 4)
-                             .toString());
     }
 }
