@@ -4,7 +4,7 @@ import com.kimlngo.leetcode.data.TreeNode;
 
 import java.util.*;
 
-public class MaxDepthofTree {
+public class MaxDepthOfTree {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         TreeNode nine = new TreeNode(9);
