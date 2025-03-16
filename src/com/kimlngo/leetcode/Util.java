@@ -10,7 +10,7 @@ public class Util {
 
     public static int[] readWaterTxt()
             throws IOException {
-        String file = "src/com/kimlngo/leetcode/water.txt";
+        String file = "src/com/kimlngo/leetcode/text/water.txt";
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String currentLine = reader.readLine();
@@ -34,7 +34,7 @@ public class Util {
     }
 
     public static int[] readBinaryArray() throws IOException {
-        String file = "src/com/kimlngo/leetcode/BinaryArray.txt";
+        String file = "src/com/kimlngo/leetcode/text/BinaryArray.txt";
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String currentLine = reader.readLine();
@@ -44,5 +44,16 @@ public class Util {
         return Arrays.stream(split)
                 .mapToInt(Integer::parseInt)
                 .toArray();
+    }
+
+    public static String[] readAnagrams() throws IOException {
+        String file = "src/com/kimlngo/leetcode/text/anagrams.txt";
+
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String currentLine = reader.readLine();
+        reader.close();
+
+        String[] split = currentLine.substring(1, currentLine.length() - 1).split(",");
+        return split;
     }
 }
