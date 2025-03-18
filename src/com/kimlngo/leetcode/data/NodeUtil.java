@@ -14,4 +14,20 @@ public class NodeUtil {
         System.out.println(sb.substring(0, sb.length() - 4)
                              .toString());
     }
+
+    public static ListNode createLinkedList(int[] arr) {
+        if(arr.length == 0) return null;
+        else if(arr.length == 1) return new ListNode(arr[0]);
+
+        //two nodes and above
+        ListNode head = new ListNode(arr[0]);
+        ListNode cur = head;
+        for (int i = 1; i < arr.length; i++) {
+            ListNode newNode = new ListNode(arr[i]);
+            cur.next = newNode;
+            cur = newNode;
+        }
+
+        return head;
+    }
 }
