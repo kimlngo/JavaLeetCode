@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 
 public class InsertMergeIntervals {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(insert(
-                new int[][]{{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}
-                , new int[]{4, 8})));
+//        System.out.println(Arrays.toString(insert(
+//                new int[][]{{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}
+//                , new int[]{4, 8})));
+
+        System.out.println(merge(new int[][]{{1, 6}, {2, 8}, {7, 12}, {10, 16}}));
 
     }
 
