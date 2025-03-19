@@ -12,29 +12,17 @@ public class RemoveElement {
     }
 
     private static int removeElement(int[] nums, int val) {
-        //1) browse through to find count of # different from val
-        int count = 0;
+        int k = 0;
 
-        //O(n)
         for (int i = 0; i < nums.length; i++) {
-            if(nums[i] != val) count++;
-        }
-
-        for(int i = 0; i < count; i++) {
-            if(nums[i] == val) {
-                remove(nums, i);
-                i--;
+            if(nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
             }
         }
-
         System.out.println(Arrays.toString(nums));
-        return count;
+        return k;
     }
 
-    private static void remove(int[] nums, int removeIdx) {
-        if (removeIdx < 0 || removeIdx >= nums.length) return;
 
-        for (int i = removeIdx; i < nums.length - 1; i++)
-            nums[i] = nums[i + 1];
-    }
 }
