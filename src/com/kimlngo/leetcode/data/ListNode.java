@@ -18,4 +18,13 @@ public class ListNode {
         this.next = next;
         this.visited = false;
     }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                ", visited=" + visited +
+                '}';
+    }
 }
