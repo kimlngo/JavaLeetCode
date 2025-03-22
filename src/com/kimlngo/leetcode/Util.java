@@ -42,8 +42,8 @@ public class Util {
 
         String[] split = currentLine.split(",");
         return Arrays.stream(split)
-                .mapToInt(Integer::parseInt)
-                .toArray();
+                     .mapToInt(Integer::parseInt)
+                     .toArray();
     }
 
     public static String[] readAnagrams() throws IOException {
@@ -53,7 +53,26 @@ public class Util {
         String currentLine = reader.readLine();
         reader.close();
 
-        String[] split = currentLine.substring(1, currentLine.length() - 1).split(",");
+        String[] split = currentLine.substring(1, currentLine.length() - 1)
+                                    .split(",");
         return split;
+    }
+
+    public static int[] readGas() throws IOException {
+        return readGasCost("src/com/kimlngo/leetcode/text/gas.txt");
+    }
+
+    public static int[] readCost() throws IOException {
+        return readGasCost("src/com/kimlngo/leetcode/text/cost.txt");
+    }
+
+    private static int[] readGasCost(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String currentLine = reader.readLine();
+        reader.close();
+
+        return Arrays.stream(currentLine.split(","))
+                     .mapToInt(Integer::parseInt)
+                     .toArray();
     }
 }
