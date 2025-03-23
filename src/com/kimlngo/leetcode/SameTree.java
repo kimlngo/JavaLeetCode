@@ -2,25 +2,23 @@ package com.kimlngo.leetcode;
 
 import com.kimlngo.leetcode.data.TreeNode;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 public class SameTree {
     public static void main(String[] args) {
         TreeNode p1, p2;
-//        TreeNode p1 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-//        TreeNode p2 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-//        System.out.println(isSameTree(p1, p2));
+        p1 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+        p2 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+        System.out.println(isSameTreeNew(p1, p2));
 
         p1 = new TreeNode(1, new TreeNode(2), null);
         p2 = new TreeNode(1, null, new TreeNode(2));
-        System.out.println(isSameTree(p1, p2));
+        System.out.println(isSameTreeNew(p1, p2));
 
-//        p1 = new TreeNode(1, new TreeNode(2), new TreeNode(1));
-//        p2 = new TreeNode(1, new TreeNode(1), new TreeNode(2));
-//        System.out.println(isSameTree(p1, p2));
+        p1 = new TreeNode(1, new TreeNode(2), new TreeNode(1));
+        p2 = new TreeNode(1, new TreeNode(1), new TreeNode(2));
+        System.out.println(isSameTreeNew(p1, p2));
     }
 
     private static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -49,6 +47,13 @@ public class SameTree {
                           .toString();
         System.out.println(string);
         return string;
+    }
+
+    private static boolean isSameTreeNew(TreeNode p, TreeNode q) {
+        if(p == null && q == null) return true;
+        else if((p == null && q != null) || (p != null && q == null)) return false;
+
+        return p.val == q.val && isSameTreeNew(p.left, q.left) && isSameTreeNew(p.right, q.right);
     }
 
 }
