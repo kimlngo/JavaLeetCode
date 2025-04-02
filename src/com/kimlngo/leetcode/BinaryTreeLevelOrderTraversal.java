@@ -52,4 +52,26 @@ public class BinaryTreeLevelOrderTraversal {
 
         return result;
     }
+
+    private static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        var levelOrder = levelOrder(root);
+
+        if(levelOrder.size() <= 1) return levelOrder;
+
+        for(int i = 0; i < levelOrder.size(); i++) {
+            if(i % 2 == 1) {
+                levelOrder.set(i, reverseList(levelOrder.get(i)));
+            }
+        }
+        return levelOrder;
+    }
+
+    private static List<Integer> reverseList(List<Integer> input) {
+        var result = new ArrayList<Integer>();
+        for(int i = input.size() - 1; i >= 0; i--) {
+            result.add(input.get(i));
+        }
+
+        return result;
+    }
 }
