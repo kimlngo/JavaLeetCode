@@ -28,4 +28,8 @@ public class TreeUtil {
                                .map(node -> String.valueOf(node.val))
                                .collect(Collectors.joining(" -> ")));
     }
+
+    public static TreeNode createTreeNode(int val) {
+        return new TreeNode(val);
+    }
 }
