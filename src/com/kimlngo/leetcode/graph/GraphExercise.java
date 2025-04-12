@@ -1,6 +1,4 @@
-package com.kimlngo.leetcode;
-
-import com.kimlngo.leetcode.data.Graph;
+package com.kimlngo.leetcode.graph;
 
 public class GraphExercise {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.kimlngo.leetcode.data;
+package com.kimlngo.leetcode.graph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class Graph {
         }
     }
 
-    private Vertex getVertexByStringId(String id) throws Exception {
+    public Vertex getVertexByStringId(String id) throws Exception {
         return vertices.stream()
                 .filter(v -> v.getId()
                         .equals(id))
@@ -77,45 +77,3 @@ public class Graph {
     }
 }
 
-class Vertex {
-    private String id;
-    private List<Vertex> neighbors;
-
-    public Vertex(String id) {
-        this.id = id;
-        this.neighbors = new ArrayList<>();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public List<Vertex> getNeighbors() {
-        return neighbors;
-    }
-
-    public void setNeighbors(List<Vertex> neighbors) {
-        this.neighbors = neighbors;
-    }
-
-    @Override
-    public String toString() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Vertex vertex = (Vertex) o;
-        return Objects.equals(id, vertex.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-}
