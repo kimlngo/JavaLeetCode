@@ -2,7 +2,6 @@ package com.kimlngo.leetcode.graph;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Graph {
     private List<Vertex> vertices;
@@ -69,7 +68,7 @@ public class Graph {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (var vertex : vertices) {
-            sb.append("\t[").append(vertex.getId()).append("] - ");
+            sb.append("\t\"").append(vertex.getId()).append("\" - ");
             sb.append("\t").append(vertex.getNeighbors());
             sb.append("\n");
         }

@@ -8,7 +8,6 @@ import java.util.Queue;
 public class GraphTraversal {
     public static void main(String[] args) throws Exception {
         Graph g = new Graph();
-        ;
 
         g.addVertex("A");
         g.addVertex("B");
