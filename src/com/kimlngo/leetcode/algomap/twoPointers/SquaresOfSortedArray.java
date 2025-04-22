@@ -1,4 +1,4 @@
-package com.kimlngo.leetcode.algomap;
+package com.kimlngo.leetcode.algomap.twoPointers;
 
 import java.util.*;
 
