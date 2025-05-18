@@ -1,4 +1,4 @@
-package api.review.list;
+package api.review;
 
 import java.util.Arrays;
 import java.util.HashSet;

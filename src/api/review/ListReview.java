@@ -1,4 +1,4 @@
-package api.review.list;
+package api.review;
 
 import java.util.ArrayList;
 import java.util.Arrays;
