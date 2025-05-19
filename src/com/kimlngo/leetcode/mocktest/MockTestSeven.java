@@ -11,7 +11,7 @@ public class MockTestSeven {
     }
 
     private static String largestTimeFromDigits(int[] arr) {
-        List<String> all = generateAllCombinations(arr);
+        List<String> all = generateAllStrings(arr);
 
         List<String> filtered = filterInvalidEntries(all);
         if (filtered.isEmpty()) return "";
@@ -98,5 +98,28 @@ public class MockTestSeven {
         all.add(String.format("%d%d%d%d", arr[3], arr[2], arr[1], arr[0]));
 
         return all;
+    }
+
+    private static List<String> generateAllStrings(int[] arr) {
+        int len = arr.length;
+        List<String> result = new ArrayList<>();
+
+        for (int a = 0; a < len; a++) {
+            for (int b = 0; b < len; b++) {
+                if (b == a) continue;
+
+                for (int c = 0; c < len; c++) {
+                    if (c == b || c == a) continue;
+
+                    for (int d = 0; d < len; d++) {
+                        if (d == a || d == b || d == c) continue;
+
+                        result.add(String.format("%d%d%d%d", arr[a], arr[b], arr[c], arr[d]));
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
