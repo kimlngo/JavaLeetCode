@@ -1,7 +1,6 @@
 package com.kimlngo.leetcode;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -59,14 +58,14 @@ public class Util {
     }
 
     public static int[] readGas() throws IOException {
-        return readGasCost("src/com/kimlngo/leetcode/text/gas.txt");
+        return readIntArray("src/com/kimlngo/leetcode/text/gas.txt");
     }
 
     public static int[] readCost() throws IOException {
-        return readGasCost("src/com/kimlngo/leetcode/text/cost.txt");
+        return readIntArray("src/com/kimlngo/leetcode/text/cost.txt");
     }
 
-    private static int[] readGasCost(String fileName) throws IOException {
+    private static int[] readIntArray(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String currentLine = reader.readLine();
         reader.close();
@@ -74,5 +73,9 @@ public class Util {
         return Arrays.stream(currentLine.split(","))
                      .mapToInt(Integer::parseInt)
                      .toArray();
+    }
+
+    public static int[] readFruit() throws IOException {
+        return readIntArray("src/com/kimlngo/leetcode/text/fruit.txt");
     }
 }
