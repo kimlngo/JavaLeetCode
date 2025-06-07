@@ -14,8 +14,8 @@ public class MockTestSixteen {
     }
 
     public String removeOuterParentheses(String s) {
-        //1) split s into individual valid parenthese
-        var parts = splitByParenthese(s);
+        //1) split s into individual valid parentheses
+        var parts = splitByParentheses(s);
 
         //2) remove the () of each individual
         //3) join the contents
@@ -24,18 +24,17 @@ public class MockTestSixteen {
                     .collect(Collectors.joining());
     }
 
-    private List<String> splitByParenthese(String s) {
+    private List<String> splitByParentheses(String s) {
         var stack = new Stack<Character>();
         StringBuilder sb = new StringBuilder();
         var list = new ArrayList<String>();
 
         for (var c : s.toCharArray()) {
+            sb.append(c);
             if (c == '(') {
                 stack.push(c);
-                sb.append(c);
             } else {
                 stack.pop();
-                sb.append(c);
 
                 if (stack.isEmpty()) {
                     list.add(sb.toString());
