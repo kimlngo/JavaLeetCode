@@ -2,12 +2,14 @@ package com.kimlngo.leetcode.mocktest;
 
 import com.kimlngo.leetcode.data.ListNode;
 import com.kimlngo.leetcode.data.NodeUtil;
+import com.kimlngo.leetcode.data.TreeNode;
 
 import java.util.Stack;
 
 public class MockTestSeventeen {
     public static void main(String[] args) {
-        var sol = new MTSevenTeenNoReverse();
+        /*var sol = new MTSevenTeenNoReverse();
+
 
         ListNode l1 = NodeUtil.createLinkedList(new int[]{0});
         ListNode l2 = NodeUtil.createLinkedList(new int[]{0});
@@ -16,7 +18,45 @@ public class MockTestSeventeen {
         NodeUtil.printList(l2);
 
         ListNode sum = sol.addTwoNumbers(l1, l2);
-        NodeUtil.printList(sum);
+        NodeUtil.printList(sum);*/
+
+
+        var root = new TreeNode(3);
+        var zero = new TreeNode(0);
+        var four = new TreeNode(4);
+
+        var two = new TreeNode(2);
+        var one = new TreeNode(1);
+
+        root.left = zero;
+        root.right = four;
+
+        zero.right = two;
+        two.left = one;
+
+        var sol = new TrimBinaryTree();
+        TreeNode treeNode = sol.trimBST(root, 1, 3);
+        System.out.println(treeNode);
+    }
+}
+
+class TrimBinaryTree {
+    public TreeNode trimBST(TreeNode root, int low, int high) {
+        if (root == null)
+            return null;
+
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
+
+        if (root.val > high) {
+            return root.left;
+        }
+
+        if (root.val < low) {
+            return root.right;
+        }
+
+        return root;
     }
 }
 
