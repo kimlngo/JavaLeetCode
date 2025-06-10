@@ -86,26 +86,26 @@ public class MockTestEight {
      * Explanation: The answer [[-2,4],[3,3]] would also be accepted.
      */
     private int[][] kClosest(int[][] points, int k) {
-        List<Point> allPoints = convertToPoints(points);
+        List<Point8> allPoints = convertToPoints(points);
 
         return allPoints.stream()
-                        .sorted(Comparator.comparingDouble(Point::getDist))
+                        .sorted(Comparator.comparingDouble(Point8::getDist))
                         .limit(k)
                         .map(this::convertPointToArray)
                         .toArray(int[][]::new);
     }
 
-    private List<Point> convertToPoints(int[][] points) {
-        List<Point> result = new ArrayList<>();
+    private List<Point8> convertToPoints(int[][] points) {
+        List<Point8> result = new ArrayList<>();
 
         for (int[] p : points) {
-            result.add(new Point(p[0], p[1]));
+            result.add(new Point8(p[0], p[1]));
         }
 
         return result;
     }
 
-    private int[] convertPointToArray(Point p) {
+    private int[] convertPointToArray(Point8 p) {
         return new int[]{p.getX(), p.getY()};
     }
 
@@ -117,12 +117,12 @@ public class MockTestEight {
     }
 }
 
-class Point {
+class Point8 {
     private final int x;
     private final int y;
     private final double dist;
 
-    public Point(int x, int y) {
+    public Point8(int x, int y) {
         this.x = x;
         this.y = y;
         this.dist = Math.sqrt(x * x + y * y);
