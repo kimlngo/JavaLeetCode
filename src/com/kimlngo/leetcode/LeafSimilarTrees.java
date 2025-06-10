@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.kimlngo.leetcode.Util.constructTree;
+
 public class LeafSimilarTrees {
     public static void main(String[] args) {
         List<Integer> tree1 = Arrays.asList(3, 5, 1, 6, 2, 9, 8, null, null, 7);
@@ -32,36 +34,6 @@ public class LeafSimilarTrees {
         }
 
         return true;
-    }
-
-    private static TreeNode constructTree(List<Integer> input) {
-        //construct all tree nodes first
-        List<TreeNode> treeNodeList = input.stream()
-                                           .map(i -> {
-                                               if (i == null) return null;
-                                               return new TreeNode(i.intValue());
-                                           })
-                                           .toList();
-
-        //create the edges
-        TreeNode root = treeNodeList.get(0);
-        int maxIndex = (int) Math.floor(((double) treeNodeList.size() - 1) / 2);
-
-        for (int i = 0; i <= maxIndex; i++) {
-            TreeNode node = treeNodeList.get(i);
-            if (node != null) {
-                int leftChildIdx = 2 * i + 1;
-                int rightChildIdx = 2 * i + 2;
-
-                if (leftChildIdx >= treeNodeList.size()) node.left = null;
-                else node.left = treeNodeList.get(leftChildIdx);
-
-                if (rightChildIdx >= treeNodeList.size()) node.right = null;
-                else node.right = treeNodeList.get(rightChildIdx);
-            }
-        }
-
-        return root;
     }
 
     private static List<TreeNode> extractLeafNodes(TreeNode root) {

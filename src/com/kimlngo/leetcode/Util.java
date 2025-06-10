@@ -1,9 +1,13 @@
 package com.kimlngo.leetcode;
 
+import com.kimlngo.leetcode.data.TreeNode;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Util {
 
@@ -77,5 +81,68 @@ public class Util {
 
     public static int[] readFruit() throws IOException {
         return readIntArray("src/com/kimlngo/leetcode/text/fruit.txt");
+    }
+
+    public static void print2DArray(int[][] array) {
+        String sb = "[\n" +
+                Arrays.stream(array)
+                      .map(Arrays::toString)
+                      .collect(Collectors.joining(",\n")) +
+                "\n]";
+        System.out.println(sb);
+    }
+
+    /**
+     * convert [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+     * to an array {{1,1,0,0},{1,0,0,1},{0,1,1,1},{1,0,1,0}}
+     *
+     * @param inputStr
+     * @return
+     */
+    public static int[][] readInputArray(String inputStr) {
+        String[] splits = inputStr.substring(2, inputStr.length() - 2)
+                                  .split("],\\[");
+        int rowCount = splits.length;
+        int colCount = splits[0].split(",").length;
+
+        int[][] result = new int[rowCount][colCount];
+
+        for (int row = 0; row < rowCount; row++) {
+            String[] numbers = splits[row].split(",");
+            for (int col = 0; col < colCount; col++) {
+                result[row][col] = Integer.parseInt(numbers[col]);
+            }
+        }
+        return result;
+    }
+
+    public static TreeNode constructTree(List<Integer> input) {
+        //construct all tree nodes first
+        List<TreeNode> treeNodeList = input.stream()
+                                           .map(i -> {
+                                               if (i == null) return null;
+                                               return new TreeNode(i);
+                                           })
+                                           .toList();
+
+        //create the edges
+        TreeNode root = treeNodeList.getFirst();
+        int maxIndex = (int) Math.floor(((double) treeNodeList.size() - 1) / 2);
+
+        for (int i = 0; i <= maxIndex; i++) {
+            TreeNode node = treeNodeList.get(i);
+            if (node != null) {
+                int leftChildIdx = 2 * i + 1;
+                int rightChildIdx = 2 * i + 2;
+
+                if (leftChildIdx >= treeNodeList.size()) node.left = null;
+                else node.left = treeNodeList.get(leftChildIdx);
+
+                if (rightChildIdx >= treeNodeList.size()) node.right = null;
+                else node.right = treeNodeList.get(rightChildIdx);
+            }
+        }
+
+        return root;
     }
 }
