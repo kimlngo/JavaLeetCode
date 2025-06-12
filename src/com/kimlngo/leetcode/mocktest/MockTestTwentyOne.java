@@ -3,32 +3,49 @@ package com.kimlngo.leetcode.mocktest;
 import java.util.*;
 
 public class MockTestTwentyOne {
+    private static final Map<String, Integer> VAL_MAP;
 
+    static {
+        VAL_MAP = new HashMap<>();
+
+        VAL_MAP.put("I", 1);
+        VAL_MAP.put("V", 5);
+        VAL_MAP.put("X", 10);
+        VAL_MAP.put("L", 50);
+        VAL_MAP.put("C", 100);
+        VAL_MAP.put("D", 500);
+        VAL_MAP.put("M", 1000);
+
+        //special case
+        VAL_MAP.put("IV", 4);
+        VAL_MAP.put("IX", 9);
+        VAL_MAP.put("XL", 40);
+        VAL_MAP.put("XC", 90);
+        VAL_MAP.put("CD", 400);
+        VAL_MAP.put("CM", 900);
+    }
     public static void main(String[] args) {
         var sol = new MockTestTwentyOne();
 
         System.out.println(sol.romanToInt("III")); //3
         System.out.println(sol.romanToInt("LVIII")); //58
         System.out.println(sol.romanToInt("MCMXCIV")); //1994
-
     }
 
     private int romanToInt(String s) {
         int value = 0, i = 0;
-        Map<String, Integer> valMap = createValMap();
 
         String cur, next;
-        var splits = s.split("");
 
         while (i < s.length() - 1) {
-            cur = splits[i];
-            next = splits[i + 1];
+            cur = String.valueOf(s.charAt(i));
+            next = String.valueOf(s.charAt(i + 1));
 
             String twoChars = cur + next;
-            if (valMap.get(twoChars) == null) {
-                value += valMap.get(cur);
+            if (VAL_MAP.get(twoChars) == null) {
+                value += VAL_MAP.get(cur);
             } else {
-                value += valMap.get(twoChars);
+                value += VAL_MAP.get(twoChars);
                 i++;
             }
 
@@ -37,30 +54,8 @@ public class MockTestTwentyOne {
 
         if (i == s.length() - 1) {
             //handle the last character
-            value += valMap.get(splits[i]);
+            value += VAL_MAP.get(String.valueOf(s.charAt(i)));
         }
         return value;
-    }
-
-    private Map<String, Integer> createValMap() {
-        Map<String, Integer> map = new HashMap<>();
-
-        map.put("I", 1);
-        map.put("V", 5);
-        map.put("X", 10);
-        map.put("L", 50);
-        map.put("C", 100);
-        map.put("D", 500);
-        map.put("M", 1000);
-
-        //special case
-        map.put("IV", 4);
-        map.put("IX", 9);
-        map.put("XL", 40);
-        map.put("XC", 90);
-        map.put("CD", 400);
-        map.put("CM", 900);
-
-        return map;
     }
 }
