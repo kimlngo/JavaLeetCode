@@ -1,9 +1,6 @@
 package com.kimlngo.leetcode.mocktest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class MockTestTwentySeven {
 
@@ -13,7 +10,7 @@ public class MockTestTwentySeven {
         System.out.println(sol.isOneBitCharacter(new int[]{1, 0, 0})); //true
         System.out.println(sol.isOneBitCharacter(new int[]{1, 1, 1, 0})); //false
 
-        KthLargest kthLargest = new KthLargest(3, new int[]{4, 5, 8, 2});
+        KthLargestV2 kthLargest = new KthLargestV2(3, new int[]{4, 5, 8, 2});
         System.out.println(kthLargest.add(3)); //3
         System.out.println(kthLargest.add(5)); //5
         System.out.println(kthLargest.add(10)); //5
@@ -21,7 +18,7 @@ public class MockTestTwentySeven {
         System.out.println(kthLargest.add(4)); //8
 
         System.out.println("Test 2");
-        kthLargest = new KthLargest(4, new int[]{7, 7, 7, 7, 8, 3});
+        kthLargest = new KthLargestV2(4, new int[]{7, 7, 7, 7, 8, 3});
         System.out.println(kthLargest.add(2)); //7
         System.out.println(kthLargest.add(10)); //7
         System.out.println(kthLargest.add(9)); //7
@@ -50,33 +47,31 @@ public class MockTestTwentySeven {
 }
 
 class KthLargest {
-    private int k;
+    private final int k;
     private Node head, tail;
 
     public KthLargest(int k, int[] nums) {
         this.k = k;
 
         if (nums.length > 0) {
-            int[] sortedInts = Arrays.stream(nums)
-                                     .sorted()
-                                     .toArray();
+            Integer[] sortedInts = Arrays.stream(nums)
+                                         .boxed()
+                                         .sorted(Comparator.reverseOrder())
+                                         .toArray(Integer[]::new);
 
-            this.head = new Node(sortedInts[sortedInts.length - 1]);
+            this.head = new Node(sortedInts[0]);
             Node cur = head;
 
-            for (int i = sortedInts.length - 2; i >= 0; i--) {
+            for (int i = 1; i < sortedInts.length; i++) {
                 cur.next = new Node(sortedInts[i]);
                 cur = cur.next;
             }
             this.tail = cur;
-            // this.printList();
         }
     }
 
     public int add(int val) {
-        // System.out.println("Add: " + val);
-
-        //1) step 1: add a new Node(val) to the linkedlist
+        //1) step 1: add a new Node(val) to the linked list
         Node insertion = new Node(val);
 
         //1.0) if no head, then just put this insertion as head
@@ -113,8 +108,6 @@ class KthLargest {
             }
         }
 
-        // this.printList();
-
         //step 2: get the kth node from linked list and return the value
         Node cur = this.head;
         for (int i = 0; i < this.k - 1; i++) {
@@ -122,18 +115,6 @@ class KthLargest {
         }
         // System.out.println("Return: " + cur.val);
         return cur.val;
-    }
-
-    void printList() {
-        StringBuilder sb = new StringBuilder();
-
-        Node tmp = this.head;
-        while (tmp != null) {
-            sb.append(tmp.val);
-            sb.append(" -> ");
-            tmp = tmp.next;
-        }
-        System.out.println(sb.substring(0, sb.length() - 4));
     }
 }
 
@@ -145,4 +126,34 @@ class Node {
         this.val = val;
         this.next = null;
     }
+}
+
+class KthLargestV2 {
+    private final int k;
+    private final PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+    public KthLargestV2(int k, int[] nums) {
+        this.k = k;
+        for(int n : nums) this.add(n);
+    }
+
+    public int add(int val) {
+        //if priorityQueue size is < k, keep adding val into priorityQueue
+        //and use peek() to get the kth-largest
+
+        //if val > current kth value then add val into the priorityQueue too
+        //but have to check the size after adding, if so, remove the old kth-value
+        int size = priorityQueue.size();
+        int peek = priorityQueue.peek() != null ? priorityQueue.peek() : Integer.MIN_VALUE;
+
+        if(priorityQueue.size() < k || priorityQueue.peek() < val) {
+            priorityQueue.add(val);
+            if(priorityQueue.size() > k) {
+                priorityQueue.remove();
+            }
+        }
+
+        return priorityQueue.peek();
+    }
+
 }
