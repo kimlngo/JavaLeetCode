@@ -143,9 +143,6 @@ class KthLargestV2 {
 
         //if val > current kth value then add val into the priorityQueue too
         //but have to check the size after adding, if so, remove the old kth-value
-        int size = priorityQueue.size();
-        int peek = priorityQueue.peek() != null ? priorityQueue.peek() : Integer.MIN_VALUE;
-
         if(priorityQueue.size() < k || priorityQueue.peek() < val) {
             priorityQueue.add(val);
             if(priorityQueue.size() > k) {

@@ -5,21 +5,24 @@ import java.util.PriorityQueue;
 
 public class PriorityQueueExample {
     public static void main(String[] args) {
-        Comparator<Integer> reverseOrderComparator = (a, b) -> b - a;
-        PriorityQueue<Integer> pQueue = new PriorityQueue<>(reverseOrderComparator);
+        Comparator<Student> decendingScoreComparator = Comparator.comparingInt(Student::score)
+                                                                 .reversed()
+                                                                 .thenComparing(Student::name);
+        PriorityQueue<Student> studentRanking = new PriorityQueue<>(decendingScoreComparator);
 
-        pQueue.add(3);
-        pQueue.add(2);
-        pQueue.add(5);
-        pQueue.add(4);
-        pQueue.add(1);
+        studentRanking.add(new Student(1, "John", 79));
+        studentRanking.add(new Student(2, "Peter", 85));
+        studentRanking.add(new Student(3, "Thomas", 77));
+        studentRanking.add(new Student(5, "Luke", 99));
+        studentRanking.add(new Student(4, "James", 99));
 
-        System.out.println(pQueue);
-
-        while (!pQueue.isEmpty()) {
-            System.out.println(pQueue.poll());
+        while (!studentRanking.isEmpty()) {
+            System.out.println(studentRanking.poll());
         }
 
-
+        System.out.println("End");
     }
 }
+
+record Student(int id, String name, int score) {
+};
