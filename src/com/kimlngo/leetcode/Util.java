@@ -99,7 +99,7 @@ public class Util {
      * @param inputStr
      * @return
      */
-    public static int[][] readInputArray(String inputStr) {
+    public static int[][] readInput2DArray(String inputStr) {
         String[] splits = inputStr.substring(2, inputStr.length() - 2)
                                   .split("],\\[");
         int rowCount = splits.length;

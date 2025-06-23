@@ -1,4 +1,4 @@
-package com.kimlngo.leetcode;
+package com.kimlngo.leetcode.mocktest;
 
 import java.util.*;
 import java.util.function.Function;

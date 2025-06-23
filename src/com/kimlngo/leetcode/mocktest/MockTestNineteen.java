@@ -15,7 +15,7 @@ public class MockTestNineteen {
     public static void main(String[] args) {
         MockTestNineteen sol = new MockTestNineteen();
 
-        Util.print2DArray(sol.flipAndInvertImage(Util.readInputArray("[[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]")));
+        Util.print2DArray(sol.flipAndInvertImage(Util.readInput2DArray("[[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]")));
 
         List<Integer> tree1 = Arrays.asList(3, 5, 1, 6, 2, 9, 8, null, null, 7, 4);
         TreeNode root1 = constructTree(tree1);
