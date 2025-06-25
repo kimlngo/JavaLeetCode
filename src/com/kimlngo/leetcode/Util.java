@@ -116,6 +116,20 @@ public class Util {
         return result;
     }
 
+    /**
+     * convert "[1,2,3]" into an int[] {1,2,3}
+     *
+     * @param input
+     * @return
+     */
+    public static int[] readInput1DArray(String input) {
+        return Arrays.stream(input.substring(1, input.length() - 1)
+                                  .split(","))
+                     .mapToInt(Integer::parseInt)
+                     .toArray();
+    }
+
+
     public static TreeNode constructTree(List<Integer> input) {
         //construct all tree nodes first
         List<TreeNode> treeNodeList = input.stream()

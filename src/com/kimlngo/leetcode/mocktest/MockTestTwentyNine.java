@@ -13,9 +13,9 @@ public class MockTestTwentyNine {
         System.out.println(fib.fib(1000));
 
         DistributedCandiesSolution distributedCandiesSolution = new DistributedCandiesSolution();
-        System.out.println(distributedCandiesSolution.distributeCandies(new int[]{1,1,2,2,3,3})); //3
-        System.out.println(distributedCandiesSolution.distributeCandies(new int[]{1,1,2,3})); //2
-        System.out.println(distributedCandiesSolution.distributeCandies(new int[]{6,6,6,6})); //1
+        System.out.println(distributedCandiesSolution.distributeCandies(Util.readInput1DArray("[1,1,2,2,3,3]"))); //3
+        System.out.println(distributedCandiesSolution.distributeCandies(Util.readInput1DArray("[1,1,2,3]"))); //2
+        System.out.println(distributedCandiesSolution.distributeCandies(Util.readInput1DArray("[6,6,6,6]"))); //1
     }
 }
 
