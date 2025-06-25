@@ -15,7 +15,7 @@ public class MockTestThirty {
         System.out.println(Arrays.toString(squaresOfSortedArray.sortedSquares(Util.readInput1DArray("[-7,-3,2,3,11]"))));
 
         CustomSortString customSortString = new CustomSortString();
-        System.out.println(customSortString.customSortString("cba", "abcd")); //bcad
+        System.out.println(customSortString.customSortString("cba", "abcd")); //cbad
         System.out.println(customSortString.customSortString("bcafg", "abcd")); //bcad
     }
 
@@ -126,16 +126,11 @@ class SquaresOfSortedArray {
         int idx = 0;
 
         while (left >= 0 && right < length) {
-            if (abs(nums[right]) < abs(nums[left])) {
+            if (abs(nums[right]) <= abs(nums[left])) {
                 result[idx++] = nums[right];
                 right++;
             } else if (abs(nums[left]) < abs(nums[right])) {
                 result[idx++] = nums[left];
-                left--;
-            } else {
-                result[idx++] = nums[right];
-                result[idx++] = nums[left];
-                right++;
                 left--;
             }
         }
