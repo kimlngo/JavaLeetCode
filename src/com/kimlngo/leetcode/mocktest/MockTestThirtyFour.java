@@ -31,9 +31,9 @@ public class MockTestThirtyFour {
      * @return
      */
     public List<String> generateParenthesis(int n) {
-        Node24 root = new Node24(String.valueOf(OPEN));
+        Node34 root = new Node34(String.valueOf(OPEN));
 
-        Queue<Node24> queue = new ArrayDeque<>();
+        Queue<Node34> queue = new ArrayDeque<>();
         queue.add(root);
 
         while(!queue.isEmpty()) {
@@ -50,7 +50,7 @@ public class MockTestThirtyFour {
         return result;
     }
 
-    private void getLeafNodes(Node24 node, List<String> result) {
+    private void getLeafNodes(Node34 node, List<String> result) {
         if(node.left == null && node.right == null)
             result.add(node.val);
 
@@ -58,7 +58,7 @@ public class MockTestThirtyFour {
         if(node.right != null) getLeafNodes(node.right, result);
     }
 
-    private void expandLeftRight(Node24 node, int n) {
+    private void expandLeftRight(Node34 node, int n) {
         if (node == null)
             return;
 
@@ -70,11 +70,11 @@ public class MockTestThirtyFour {
             return;
 
         if (openCount < n) {
-            node.left = new Node24(node.val + OPEN);
+            node.left = new Node34(node.val + OPEN);
         }
 
         if (closeCount < n && closeCount < openCount) {
-            node.right = new Node24(node.val + CLOSE);
+            node.right = new Node34(node.val + CLOSE);
         }
     }
 
@@ -93,11 +93,11 @@ public class MockTestThirtyFour {
 
 }
 
-class Node24 {
+class Node34 {
     String val;
-    Node24 left, right;
+    Node34 left, right;
 
-    public Node24(String val) {
+    public Node34(String val) {
         this.val = val;
     }
 }
