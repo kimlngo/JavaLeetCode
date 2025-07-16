@@ -40,7 +40,7 @@ public class InsertMergeIntervals {
         List<List<Integer>> sortedIntervals = Arrays.stream(intervals)
                                                     .map(interval -> Arrays.asList(interval[0], interval[1]))
                                                     .sorted(Comparator.comparingInt(List::getFirst))
-                                                    .collect(Collectors.toList());
+                                                    .toList();
 
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> inner = new ArrayList<>();

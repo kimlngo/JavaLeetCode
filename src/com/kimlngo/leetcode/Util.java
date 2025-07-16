@@ -84,10 +84,10 @@ public class Util {
     }
 
     public static void print2DArray(int[][] array) {
-        String sb = "[\n" +
+        String sb = "[\n\t" +
                 Arrays.stream(array)
                       .map(Arrays::toString)
-                      .collect(Collectors.joining(",\n")) +
+                      .collect(Collectors.joining(",\n\t")) +
                 "\n]";
         System.out.println(sb);
     }
